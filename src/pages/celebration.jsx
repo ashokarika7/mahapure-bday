@@ -16,7 +16,6 @@
  */
 
 import React, { useEffect, useRef, useState } from "react";
-import "./celebration.styles.css";
 
 export default function SecondPage({
   friendImageFilename = "friend.JPG",
@@ -34,19 +33,15 @@ export default function SecondPage({
   const [isMuted, setIsMuted] = useState(false);
   const [showPlayPrompt, setShowPlayPrompt] = useState(false); // fallback prompt visible if autoplay blocked
   const [audioPlaying, setAudioPlaying] = useState(false); // whether audio is currently playing (audible)
+  const [stylesLoaded, setStylesLoaded] = useState(false);
 
   // Celebration / confetti refs
   const confettiContainerRef = useRef(null);
   const [sequenceState, setSequenceState] = useState("init");
 
-  // Tailwind CDN injection (keeps component portable)
+  // Styles are now loaded at main level, so set loaded immediately
   useEffect(() => {
-    if (!document.querySelector('script[src="https://cdn.tailwindcss.com"]')) {
-      const s = document.createElement("script");
-      s.src = "https://cdn.tailwindcss.com";
-      s.async = true;
-      document.head.appendChild(s);
-    }
+    setStylesLoaded(true);
   }, []);
 
   // Reveal choreography (image -> heading -> typing -> confetti)
@@ -236,6 +231,18 @@ export default function SecondPage({
   // Derived asset paths
   const imageSrc = `/assets/${friendImageFilename}`;
   const audioSrc = `/assets/${birthdaySongFilename}`;
+
+  // Show loading state until styles are loaded
+  if (!stylesLoaded) {
+    return (
+      <div className="celebration-root w-full min-h-screen flex items-center justify-center px-4 py-8 bg-cream relative overflow-hidden">
+        <div className="bg-warm-blur absolute inset-0 -z-30" />
+        <div className="text-center">
+          <div className="text-soft-ink text-xl font-bold">Loading...</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="celebration-root w-full min-h-screen flex items-center justify-center px-4 py-8 bg-cream relative overflow-hidden">

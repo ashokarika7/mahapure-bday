@@ -4,11 +4,11 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./home.styles.css"; // All custom CSS / keyframes live here
 
 export default function Home({ onGiftClick = () => {} }) {
   // isOpening: false = idle/closed, true = opening/opened
   const [isOpening, setIsOpening] = useState(false);
+  const [stylesLoaded, setStylesLoaded] = useState(false);
   const navigate = useNavigate();
 
   // animatingRef prevents double clicks/taps while animation runs
@@ -18,14 +18,9 @@ export default function Home({ onGiftClick = () => {} }) {
   const lidRef = useRef(null);
   const confettiRef = useRef(null);
 
-  // Inject Tailwind CDN if not present (optional; remove if your project already builds Tailwind).
+  // Styles are now loaded at main level, so set loaded immediately
   useEffect(() => {
-    if (!document.querySelector('script[src="https://cdn.tailwindcss.com"]')) {
-      const s = document.createElement("script");
-      s.src = "https://cdn.tailwindcss.com";
-      s.async = true;
-      document.head.appendChild(s);
-    }
+    setStylesLoaded(true);
   }, []);
 
   // Start opening sequence
@@ -73,6 +68,18 @@ export default function Home({ onGiftClick = () => {} }) {
     const bg = ["#fde68a", "#fca5a5", "#93c5fd", "#f0abfc", "#6ee7b7"][i % 5];
     return { dx, dy, rot, delay, w, h, bg, idx: i };
   });
+
+  // Show loading state until styles are loaded
+  if (!stylesLoaded) {
+    return (
+      <div className="home-root w-full min-h-screen flex items-center justify-center relative overflow-hidden px-3 sm:px-4 md:px-6 py-6 sm:py-8">
+        <div className="bg-animated-gradient absolute inset-0 -z-10" />
+        <div className="text-center">
+          <div className="text-white text-xl font-bold">Loading...</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="home-root w-full min-h-screen flex items-center justify-center relative overflow-hidden px-3 sm:px-4 md:px-6 py-6 sm:py-8">
