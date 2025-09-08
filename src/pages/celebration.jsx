@@ -238,7 +238,7 @@ export default function SecondPage({
   const audioSrc = `/assets/${birthdaySongFilename}`;
 
   return (
-    <div className="celebration-root min-h-screen flex items-center justify-center px-4 py-8 bg-cream relative overflow-hidden">
+    <div className="celebration-root w-full min-h-screen flex items-center justify-center px-4 py-8 bg-cream relative overflow-hidden">
       <div className="bg-warm-blur absolute inset-0 -z-30" />
       <div className={`particle-field absolute inset-0 -z-20 ${sequenceState !== "init" ? "particles-on" : ""}`} />
       <div className="soft-vignette absolute inset-0 -z-10 pointer-events-none" />

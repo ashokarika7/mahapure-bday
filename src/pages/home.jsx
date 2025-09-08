@@ -75,7 +75,7 @@ export default function Home({ onGiftClick = () => {} }) {
   });
 
   return (
-    <div className="home-root min-h-screen flex items-center justify-center relative overflow-hidden px-3 sm:px-4 md:px-6 py-6 sm:py-8">
+    <div className="home-root w-full min-h-screen flex items-center justify-center relative overflow-hidden px-3 sm:px-4 md:px-6 py-6 sm:py-8">
       {/* Animated gradient background */}
       <div className="bg-animated-gradient absolute inset-0 -z-10" />
 

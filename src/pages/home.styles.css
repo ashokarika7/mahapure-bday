@@ -74,6 +74,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  width: 100%;
+  min-height: 100vh;
 }
 
 /* animated gradient background: mobile-first - faster and smoother */
