@@ -282,7 +282,7 @@ export default function SecondPage({
       </div>
 
       <main className="reveal-card w-full max-w-3xl mx-auto rounded-2xl shadow-2xl p-5 sm:p-10 flex flex-col items-center text-center relative z-10" role="main" aria-live="polite">
-        <div className="mb-2 sm:mb-3 text-xs sm:text-sm text-muted-gold">Made with love for <span className="font-semibold">{friendName}</span></div>
+        <div className="mb-2 sm:mb-3 text-xs sm:text-sm text-muted-gold">Made with love from Fotoowl team for <span className="font-semibold">{friendName}</span></div>
 
         <div
           className="image-frame w-full max-w-[360px] sm:max-w-[640px] rounded-2xl overflow-hidden mb-5 sm:mb-7 transform-gpu"
