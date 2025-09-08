@@ -19,7 +19,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./celebration.styles.css";
 
 export default function SecondPage({
-  friendImageFilename = "friend.jpg",
+  friendImageFilename = "friend.JPG",
   birthdaySongFilename = "happy-birthday-155461.mp3",
   personalMessage = "Wishing you a day filled with love, laughter, and all the little joys that make life beautiful.",
   friendName = "Tushar Mahapure",
@@ -291,7 +291,15 @@ export default function SecondPage({
             e.currentTarget.style.transform = "none";
           }}
         >
-          <img src={imageSrc} alt={`Photo of ${friendName}`} className={`friend-image w-full h-auto object-cover block reveal-image ${sequenceState !== "init" ? "image-in" : ""}`} onError={(ev) => { ev.currentTarget.style.opacity = "0"; }} draggable={false} />
+          <img 
+            src={imageSrc} 
+            alt={`Photo of ${friendName}`} 
+            className={`friend-image w-full h-auto object-cover block reveal-image ${sequenceState !== "init" ? "image-in" : ""}`} 
+            onError={(ev) => { 
+              ev.currentTarget.style.opacity = "0"; 
+            }} 
+            draggable={false} 
+          />
           <div className={`image-frame-glow ${sequenceState !== "init" ? "glow-on" : ""}`} />
           <div className="image-vignette" />
         </div>

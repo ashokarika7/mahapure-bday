@@ -11,10 +11,10 @@ export default function App() {
         path="/celebration" 
         element={
           <Celebration 
-            friendImageFilename="912A6071.JPG"
-            friendName="Birthday Person"
+            friendImageFilename="friend.JPG"
+            friendName="Tushar Mahapure"
             personalMessage="Wishing you the happiest birthday filled with joy, laughter, and wonderful memories!"
-            birthdaySongFilename="birthday_song.mp3"
+            birthdaySongFilename="happy-birthday-155461.mp3"
           />
         } 
       />
